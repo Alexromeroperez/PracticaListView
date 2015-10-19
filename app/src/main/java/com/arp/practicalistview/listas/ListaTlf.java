@@ -2,6 +2,7 @@ package com.arp.practicalistview.listas;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -79,5 +80,14 @@ public class ListaTlf extends AppCompatActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    public void aceptar(View v){
+        Intent anterior=new Intent();
+        Bundle b=new Bundle();
+        b.putStringArrayList("tlfs",tlfs);
+        anterior.putExtras(b);
+        setResult(RESULT_OK,anterior);
+        finish();
     }
 }

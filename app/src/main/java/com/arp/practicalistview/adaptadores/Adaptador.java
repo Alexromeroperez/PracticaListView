@@ -65,18 +65,8 @@ public class Adaptador extends ArrayAdapter<Contacto> {
         }else {
             vh.btMostrar.setImageResource(R.drawable.menos);
         }
-
-        //Carga una actividad donde muestra los telefonos del elemento elegido
-        vh.btMostrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(contexto,ListaTlf.class);
-                Bundle b=new Bundle();
-                b.putStringArrayList("telefonos", telefonos);
-                i.putExtras(b);
-                contexto.startActivity(i);
-            }
-        });
+        //Paso la lista de telefonos del contacto elegido
+        vh.btMostrar.setTag(telefonos);
 
         return convertView;
     }

@@ -18,6 +18,7 @@ import com.arp.practicalistview.R;
 import com.arp.practicalistview.adaptadores.Adaptador;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -27,6 +28,8 @@ public class Principal extends AppCompatActivity {
     private ListView lv;
     private ArrayList <Contacto> listaC;
     private Adaptador ad;
+    private int posicion;
+    private final int MOSTRAR=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +90,8 @@ public class Principal extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            Contacto c=listaC.get(info.position);
+        posicion=info.position;
+            Contacto c=listaC.get(posicion);
         switch (item.getItemId()) {
             case R.id.añadirTlf:
                 Dialogo.addTlf(this, c);
@@ -135,5 +139,25 @@ public class Principal extends AppCompatActivity {
         registerForContextMenu(lv);
     }
 
+    public void mostrar(View v){
+        ArrayList <String> tlf=(ArrayList<String>)v.getTag();
+        Intent i=new Intent(this,ListaTlf.class);
+        Bundle b=new Bundle();
+        b.putStringArrayList("telefonos", tlf);
+        i.putExtras(b);
+        startActivityForResult(i, MOSTRAR);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==MOSTRAR && resultCode==RESULT_OK){
+            Bundle b=data.getExtras();
+            Contacto c=listaC.get(posicion);
+            c.setTlfs((ArrayList<String>)b.get("tlfs"));
+            Collections.sort(listaC);
+            ad.notifyDataSetChanged();
+        }
+
+    }
 }
