@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".Principal">
+    <item android:id="@+id/añadir"
+        android:title="@string/menu_anadir"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/ordenarAsc"
+        android:title="@string/menu_ora"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/ordenarDes"
+        android:title="@string/menu_ord"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+</menu>

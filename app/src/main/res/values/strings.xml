@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PracticaListView</string>
+
+    <string name="menu_anadir">Añadir</string>
+    <string name="menu_anadirTlf">Añadir Telefono</string>
+    <string name="menu_borra">Eliminar</string>
+    <string name="menu_editar">Modificar</string>
+    <string name="menu_ora">Ordenar Ascendente</string>
+    <string name="menu_ord">Ordemar Descendente</string>
+
+    <string name="str_añadirContacto">Añadir Contacto</string>
+    <string name="str_sintelef">No hay telefonos</string>
+    <string name="str_añadirTlf">Añadir Telefono</string>
+    <string name="str_modifica">Modificar</string>
+    <string name="str_cancelar">Cancelar</string>
+
+</resources>
